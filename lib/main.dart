@@ -42,10 +42,35 @@ class LandingPage extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: const <Widget>[
-            Text(
-              'Welcome to mobmaid!',
+          // mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Row(
+              children: const [
+                Expanded(
+                    child: TextField(
+                  decoration: InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText: 'Participant Name',
+                  ),
+                ))
+              ],
+            ),
+            Row(
+              children: [
+                Expanded(
+                    child: GridView(
+                  shrinkWrap: true,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                  ),
+                  children: [
+                    Image.network('https://picsum.photos/250?image=1'),
+                    Image.network('https://picsum.photos/250?image=2'),
+                    Image.network('https://picsum.photos/250?image=3'),
+                    Image.network('https://picsum.photos/250?image=4'),
+                  ],
+                ))
+              ],
             ),
           ],
         ),
