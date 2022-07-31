@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -63,11 +64,11 @@ class LandingPage extends StatelessWidget {
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                   ),
-                  children: [
-                    Image.network('https://picsum.photos/250?image=1'),
-                    Image.network('https://picsum.photos/250?image=2'),
-                    Image.network('https://picsum.photos/250?image=3'),
-                    Image.network('https://picsum.photos/250?image=4'),
+                  children: const [
+                    Text("User 1"),
+                    Text("User 2"),
+                    Text("User 3"),
+                    Text("User 4"),
                   ],
                 ))
               ],
