@@ -30,16 +30,23 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class LandingPage extends StatelessWidget {
+class LandingPage extends StatefulWidget {
   const LandingPage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
+  State<StatefulWidget> createState() {
+    return LandingPageState();
+  }
+}
+
+class LandingPageState extends State<LandingPage> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(widget.title),
       ),
       body: Center(
         child: Column(
@@ -49,28 +56,28 @@ class LandingPage extends StatelessWidget {
               children: const [
                 Expanded(
                     child: TextField(
-                  decoration: InputDecoration(
-                    border: UnderlineInputBorder(),
-                    labelText: 'Participant Name',
-                  ),
-                ))
+                      decoration: InputDecoration(
+                        border: UnderlineInputBorder(),
+                        labelText: 'Participant Name',
+                      ),
+                    ))
               ],
             ),
             Row(
               children: [
                 Expanded(
                     child: GridView(
-                  shrinkWrap: true,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                  ),
-                  children: const [
-                    Text("User 1"),
-                    Text("User 2"),
-                    Text("User 3"),
-                    Text("User 4"),
-                  ],
-                ))
+                      shrinkWrap: true,
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                      ),
+                      children: const [
+                        Text("User 1"),
+                        Text("User 2"),
+                        Text("User 3"),
+                        Text("User 4"),
+                      ],
+                    ))
               ],
             ),
           ],
