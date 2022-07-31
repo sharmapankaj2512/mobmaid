@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:mobmaid/mob.dart';
 
 void main() {
   runApp(const MyApp());
@@ -42,6 +42,8 @@ class LandingPage extends StatefulWidget {
 }
 
 class LandingPageState extends State<LandingPage> {
+  final _mob = Mob();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,36 +55,42 @@ class LandingPageState extends State<LandingPage> {
           // mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Row(
-              children: const [
+              children: [
                 Expanded(
                     child: TextField(
-                      decoration: InputDecoration(
-                        border: UnderlineInputBorder(),
-                        labelText: 'Participant Name',
-                      ),
-                    ))
+                      key: const Key('participant_name'),
+                  onSubmitted: _join,
+                  decoration: const InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText: 'Participant Name',
+                  ),
+                ))
               ],
             ),
             Row(
               children: [
                 Expanded(
                     child: GridView(
-                      shrinkWrap: true,
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                      ),
-                      children: const [
-                        Text("User 1"),
-                        Text("User 2"),
-                        Text("User 3"),
-                        Text("User 4"),
-                      ],
-                    ))
+                        shrinkWrap: true,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                        ),
+                        children:
+                            _mob.participants().map<Widget>((participant) {
+                          return Text(participant);
+                        }).toList()))
               ],
             ),
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  void _join(String participant) {
+    setState(() {
+      _mob.join(participant);
+    });
   }
 }
