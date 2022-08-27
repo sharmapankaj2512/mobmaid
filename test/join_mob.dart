@@ -17,7 +17,7 @@ void main() {
     expect(mob.participants(), ["alpha", "beta"]);
   });
 
-  testWidgets('acceptance', (WidgetTester tester) async {
+  testWidgets('add mob participants', (WidgetTester tester) async {
     await tester.pumpWidget(const MyApp());
     await tester.enterText(find.byKey(const Key('participant_name')), 'ria');
     await tester.testTextInput.receiveAction(TextInputAction.done);
