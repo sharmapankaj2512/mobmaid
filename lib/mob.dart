@@ -10,9 +10,9 @@ class Mob {
   }
 
   void rotate() {
-    if (_participants.isEmpty) {
-      return;
+    if (_participants.isNotEmpty) {
+      var firstParticipant = _participants.removeAt(0);
+      _participants.add(firstParticipant);
     }
-    _participants.add(_participants.removeAt(0));
   }
 }

@@ -8,6 +8,13 @@ void main() {
     expect(mob.participants(), []);
   });
 
+  test('one participants', () {
+    final mob = Mob();
+    mob.join("alex");
+    mob.rotate();
+    expect(mob.participants(), ["alex"]);
+  });
+
   test('two participants', () {
     final mob = Mob();
     mob.join("alex");
