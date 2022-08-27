@@ -58,13 +58,13 @@ class LandingPageState extends State<LandingPage> {
               children: [
                 Expanded(
                     child: TextField(
-                      key: const Key('participant_name'),
-                      onSubmitted: _join,
-                      decoration: const InputDecoration(
-                        border: UnderlineInputBorder(),
-                        labelText: 'Participant Name',
-                      ),
-                    ))
+                  key: const Key('participant_name'),
+                  onSubmitted: _join,
+                  decoration: const InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText: 'Participant Name',
+                  ),
+                ))
               ],
             ),
             Row(
@@ -73,12 +73,29 @@ class LandingPageState extends State<LandingPage> {
                     child: GridView(
                         shrinkWrap: true,
                         gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 3,
                         ),
                         children:
-                        _mob.participants().map<Widget>((participant) {
-                          return Text(participant);
+                            _mob.participants().map<Widget>((participant) {
+                          return FractionallySizedBox(
+                              widthFactor: 0.7,
+                              heightFactor: 0.3,
+                              child: Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Colors.black,
+                                    ),
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      participant,
+                                      maxLines: 1,
+                                      softWrap: true,
+                                      overflow: TextOverflow.fade,
+                                    ),
+                                  )));
                         }).toList()))
               ],
             ),
