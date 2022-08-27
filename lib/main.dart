@@ -78,16 +78,19 @@ class LandingPageState extends State<LandingPage> {
                             const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 3,
                         ),
-                        children:
-                            _mob.participants().map<Widget>((participant) {
-                          return Participant(participant: participant);
-                        }).toList()))
+                        children: makeParticipants()))
               ],
             ),
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  makeParticipants() {
+    return _mob.participants().map<Widget>((participant) {
+      return Participant(participant: participant);
+    }).toList();
   }
 
   void _join(String participant) {
