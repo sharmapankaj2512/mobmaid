@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobmaid/mob.dart';
 
 import 'Participant.dart';
+import 'Participants.dart';
 
 void main() {
   runApp(const MyApp());
@@ -88,28 +89,5 @@ class LandingPageState extends State<LandingPage> {
     setState(() {
       _mob.join(participant);
     });
-  }
-}
-
-class Participants extends StatelessWidget {
-  final List<dynamic> participants;
-
-  const Participants({Key? key, required this.participants}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-        child: GridView(
-            shrinkWrap: true,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-            ),
-            children: makeParticipants()));
-  }
-
-  makeParticipants() {
-    return participants.map<Widget>((participant) {
-      return Participant(participant: participant);
-    }).toList();
   }
 }
