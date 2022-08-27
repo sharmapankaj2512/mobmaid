@@ -8,4 +8,8 @@ class Mob {
   join(String participant) {
     _participants.add(participant);
   }
+
+  void rotate() {
+    _participants.add(_participants.removeAt(0));
+  }
 }
