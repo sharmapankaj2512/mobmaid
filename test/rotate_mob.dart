@@ -2,6 +2,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mobmaid/Mob.dart';
 
 void main() {
+  test('zero participants', () {
+    final mob = Mob();
+    mob.rotate();
+    expect(mob.participants(), []);
+  });
+
   test('two participants', () {
     final mob = Mob();
     mob.join("alex");
