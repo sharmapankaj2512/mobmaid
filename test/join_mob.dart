@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mobmaid/Mob.dart';
 import 'package:mobmaid/main.dart';
-import 'package:mobmaid/mob.dart';
 
 void main() {
   test('one participant joins the mob', () {

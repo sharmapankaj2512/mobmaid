@@ -59,12 +59,12 @@ class LandingPageState extends State<LandingPage> {
                 Expanded(
                     child: TextField(
                       key: const Key('participant_name'),
-                  onSubmitted: _join,
-                  decoration: const InputDecoration(
-                    border: UnderlineInputBorder(),
-                    labelText: 'Participant Name',
-                  ),
-                ))
+                      onSubmitted: _join,
+                      decoration: const InputDecoration(
+                        border: UnderlineInputBorder(),
+                        labelText: 'Participant Name',
+                      ),
+                    ))
               ],
             ),
             Row(
@@ -73,11 +73,11 @@ class LandingPageState extends State<LandingPage> {
                     child: GridView(
                         shrinkWrap: true,
                         gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 3,
                         ),
                         children:
-                            _mob.participants().map<Widget>((participant) {
+                        _mob.participants().map<Widget>((participant) {
                           return Text(participant);
                         }).toList()))
               ],
