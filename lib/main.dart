@@ -84,9 +84,17 @@ class LandingPageState extends State<LandingPage> {
                               child: Container(
                                   decoration: BoxDecoration(
                                     border: Border.all(
-                                      color: Colors.black,
+                                      color: Colors.blue,
                                     ),
-                                    borderRadius: BorderRadius.circular(10.0),
+                                    borderRadius: const BorderRadius.all(Radius.circular(20)),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.blue.withOpacity(0.5),
+                                        spreadRadius: 5,
+                                        blurRadius: 7,
+                                        offset: const Offset(0, 3), // changes position of shadow
+                                      ),
+                                    ],
                                   ),
                                   child: Center(
                                     child: Text(
