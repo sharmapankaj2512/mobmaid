@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:mobmaid/mob.dart';
 
@@ -46,6 +48,13 @@ class LandingPage extends StatefulWidget {
 
 class LandingPageState extends State<LandingPage> {
   final _mob = Mob();
+  Timer? _timer;
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,11 +70,29 @@ class LandingPageState extends State<LandingPage> {
               children: [
                 Expanded(
                     child: TextField(
+                  key: const Key('timer'),
+                  onSubmitted: _onTimerSubmitted,
+                  decoration: const InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText: 'Time in Minutes',
+                  ),
+                )),
+                Expanded(
+                    child: TextField(
                   key: const Key('participant_name'),
                   onSubmitted: _join,
                   decoration: const InputDecoration(
                     border: UnderlineInputBorder(),
                     labelText: 'Participant Name',
+                  ),
+                )),
+                Expanded(
+                    child: TextButton(
+                  key: const Key('start_mob'),
+                  onPressed: () {},
+                  child: const Text(
+                    'TextButton (New)',
+                    style: TextStyle(fontSize: 30),
                   ),
                 ))
               ],
@@ -88,6 +115,16 @@ class LandingPageState extends State<LandingPage> {
   void _join(String participant) {
     setState(() {
       _mob.join(participant);
+    });
+  }
+
+  void _onTimerSubmitted(String minutes) {
+    var timerMinutes = Duration(minutes: int.tryParse(minutes) ?? 5);
+    _timer = Timer.periodic(timerMinutes, (Timer timer) {
+      setState(() {
+        _mob.rotate();
+        timer.cancel();
+      });
     });
   }
 }

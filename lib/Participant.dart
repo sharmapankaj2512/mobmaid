@@ -28,6 +28,7 @@ class Participant extends StatelessWidget {
             ),
             child: Center(
               child: Text(
+                key: Key(participant),
                 participant,
                 maxLines: 1,
                 softWrap: true,
